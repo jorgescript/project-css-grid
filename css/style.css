@@ -64,8 +64,30 @@ body {
 
 .sidebar {
   background-color: #c69963;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  /* grid layout page */
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1; }
+  .sidebar .nav-btn {
+    position: fixed;
+    border: none;
+    border-radius: 0;
+    background-color: #ffffff;
+    height: 0.2rem;
+    width: 4.5rem;
+    margin-top: 4rem; }
+    .sidebar .nav-btn::before, .sidebar .nav-btn::after {
+      content: "";
+      display: block;
+      background-color: #ffffff;
+      height: 0.2rem;
+      width: 4.5rem; }
+    .sidebar .nav-btn::before {
+      transform: translateY(-1.5rem); }
+    .sidebar .nav-btn::after {
+      transform: translateY(1.3rem); }
 
 .header {
   background-color: #54483a;
@@ -267,6 +289,7 @@ body {
   grid-column: full-start / full-end; }
   .footer .nav {
     list-style: none;
+    /* grid layout footer */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     align-items: center;
