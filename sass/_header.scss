@@ -2,6 +2,9 @@
   /* grid layout page */
   grid-column: full-start / col-end 6;
   justify-content: center;
+  @media screen and (max-width: $bp-medium) {
+    grid-column: 1 / -1;
+  }
 
   background-image: linear-gradient(
       rgba($color-secondary, 0.93),
@@ -14,8 +17,9 @@
 
   /* grid layout header */
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
-  grid-template-columns: max-content;
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
+  row-gap: 2rem;
 
   &__logo {
     height: 3rem;
@@ -49,11 +53,13 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    align-items: center;
     column-gap: 3rem;
 
     img {
       opacity: 0.5;
-      height: 2.5rem;
+      max-height: 2.5rem;
+      max-width: 100%;
     }
   }
 }

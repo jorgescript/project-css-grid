@@ -1,6 +1,9 @@
 .realtors {
   /* grid layout page */
   grid-column: col-start 7 / full-end;
+  @media screen and (max-width: $bp-medium) {
+    grid-column: 1 / -1;
+  }
 
   /* grid layout realtors */
   display: grid;
@@ -18,6 +21,12 @@
     column-gap: 2rem;
     row-gap: 5vh;
     align-items: center;
+    @media screen and (max-width: $bp-medium) {
+      grid-template-columns: repeat(3, min-content max-content);
+    }
+    @media screen and (max-width: $bp-small) {
+      grid-template-columns: min-content max-content;
+    }
   }
 
   &__img {

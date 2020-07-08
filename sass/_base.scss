@@ -1,4 +1,4 @@
-// COLOR VARIABLES
+/* COLOR VARIABLES */
 $color-primary: #c69963;
 $color-primary-dark: #b28451;
 
@@ -10,13 +10,23 @@ $color-grey-light-2: #aaa;
 $color-grey-dark-1: #54483a;
 $color-grey-dark-2: #6d5d4b;
 
-// FONT VARIABLES
+/* FONT VARIABLES */
 $font-primary: "Nunito", sans-serif;
 $font-display: "Josefin Sans", sans-serif;
+
+/* RESPONSIVE BREAKPOINTS */
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 100px
+$bp-medium: 50em; // 800px
+$bp-small: 36.25em; // 580px
 
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  @media screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
 }
 
 *,
@@ -37,11 +47,30 @@ body {
 .container {
   display: grid;
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
-  /* 1 columna de 8rem, 8 columnas donde el ancho minimo es su contenido y el ancho maximo son 14rem */
   grid-template-columns:
     [sidebar-start] 8rem [sidebar-end full-start]
     minmax(6rem, 1fr)
     [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
     [center-end]
     minmax(6rem, 1fr) [full-end];
+
+  @media screen and (max-width: $bp-large) {
+    /* Se añadio una fila (sidebar) */
+    grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    /* Se elimino una columna (sidebar) */
+    grid-template-columns:
+      [full-start] minmax(6rem, 1fr)
+      [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+      [center-end]
+      minmax(6rem, 1fr) [full-end];
+  }
+
+  @media screen and (max-width: $bp-medium) {
+    /* Se añadio una fila */
+    grid-template-rows:
+      6rem calc(100vh - 6rem)
+      min-content min-content
+      min-content min-content
+      repeat(4, min-content);
+  }
 }
